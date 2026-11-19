@@ -1,0 +1,9 @@
+node_modules/
+webapp/node_modules/
+webapp/dist/
+server/dist/
+dist/
+.env
+*.pem
+*.key
+.DS_Store

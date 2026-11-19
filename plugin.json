@@ -1,0 +1,16 @@
+{
+  "id": "space.altlinux.bugzilla",
+  "name": "Bugzilla Links",
+  "description": "Personal Bugzilla link previews with per-user permissions and caching.",
+  "version": "0.1.0",
+  "min_server_version": "11.10.0",
+  "homepage_url": "https://github.com/Toxblh/mattermost-plugin-bugzilla",
+  "support_url": "https://github.com/Toxblh/mattermost-plugin-bugzilla/issues",
+  "server": {"executables": {"linux-amd64": "server/dist/plugin-linux-amd64", "linux-arm64": "server/dist/plugin-linux-arm64"}},
+  "webapp": {"bundle_path": "webapp/dist/main.js"},
+  "settings_schema": {"header": "Public bugs work without a Bugzilla account. Personal API keys are entered privately by each user via the main menu. Set the encryption secret outside the database before connecting personal accounts.", "settings": [
+    {"key": "BugzillaURL", "display_name": "Bugzilla server URL", "type": "text", "help_text": "HTTPS URL of your Bugzilla server, e.g. https://bugzilla.altlinux.org. REST API must be reachable from Mattermost.", "default": "https://bugzilla.altlinux.org"},
+    {"key": "APIKeyTransport", "display_name": "API key transport", "type": "dropdown", "help_text": "Bugzilla 5.2 uses the api_key query parameter. Never log upstream query strings. Use header only when your Bugzilla supports X-BUGZILLA-API-KEY.", "default": "query", "options": [{"display_name":"Query parameter (Bugzilla 5.2)","value":"query"},{"display_name":"HTTP header","value":"header"}]},
+    {"key": "EncryptionKeyFile", "display_name": "Encryption secret file", "type": "text", "help_text": "Optional absolute path readable by the plugin, containing a base64-encoded 32-byte secret. Alternatively set MM_BUGZILLA_ENCRYPTION_KEY_FILE or MM_BUGZILLA_ENCRYPTION_KEY. The secret itself is never saved in plugin settings.", "default": ""}
+  ]}
+}
